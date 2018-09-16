@@ -5,6 +5,12 @@ const port = process.env.PORT || 5000;
 
 require('dotenv').config();
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/api/hello', (req, res) => {
     console.log(req.params);
   res.send({ express: 'Hello From Express' });
@@ -16,8 +22,7 @@ app.get('/api/gif/:id', (req, res) => {
   .then(response => {
     console.log(response.data.data.images.fixed_height.url);
       res.send({
-        url: response.data.data.images.fixed_height.url,
-        id: req.params.id
+        data: response.data.data.images.fixed_height.url
       });
   })
   .catch(function (error) {

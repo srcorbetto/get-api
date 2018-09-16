@@ -17,8 +17,7 @@ app.get('/api/gif/:id', (req, res) => {
     console.log(response.data.data.images.fixed_height.url);
       res.send({
         url: response.data.data.images.fixed_height.url,
-        id: req.params.id,
-        APIKey: process.env.GIPHY_WEATHER_API_KEY
+        id: req.params.id
       });
   })
   .catch(function (error) {

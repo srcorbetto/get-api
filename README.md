@@ -1,0 +1,1 @@
+An API to handle GET requests
